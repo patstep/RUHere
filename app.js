@@ -2,6 +2,8 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
 const authRoutes = require('./routes/auth-routes');
+const passportSetup = require('./config/passport-setup');
+
 
 const app = express();
 
