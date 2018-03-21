@@ -4,13 +4,25 @@ const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 const authRoutes = require('./routes/auth-routes');
 const passportSetup = require('./config/passport-setup');
+//socket.io
+const socket = require('socket.io');
+
 
 // set up the express app
 const app = express();
 const PORT = process.env.PORT || 8080;
+const server = app.listen(PORT, () => {
+	console.log(`App now listening at PORT: ${PORT}`);
+});
 
+// socket.io setup
+const io = socket(server);
+
+io.on('connection', (socket) =>{
+	console.log('socket is connected...');
+});
 // models
-const db = require('./models');
+// const db = require('./models');
 
 // set up express app to handle data parsing
 // parse application/x-www-form-urlencoded
@@ -30,24 +42,29 @@ app.use(express.static("public"));
 // set up routes
 app.use('/auth', authRoutes);
 
-// create home route
-app.get('/', (req, res) => {
-	res.render('index');
-});
+// app.use('/', htmlRoutes);
 
-// syncing our sequelize models and then starting our express app
-db.sequelize.sync({force:true}).then(() => {
-	app.listen(PORT, () => {
-		console.log(`App now listening at PORT: ${PORT}`);
-	});
-});
+// // create home route
+// app.get('/', (req, res) => {
+// 	res.render('index');
+// });
+
+// routes
+require('./routes/html-routes.js')(app);
+
+// // syncing our sequelize models and then starting our express app
+// db.sequelize.sync({force:true}).then(() => {
+// 	app.listen(PORT, () => {
+// 		console.log(`App now listening at PORT: ${PORT}`);
+// 	});
+// });
 
 
 
 
 
 
-// // LISTEN TO PORT
+// LISTEN TO PORT
 // app.listen(PORT, () => {
 // 	console.log(`App now listening at PORT: ${PORT}`);
 // });
