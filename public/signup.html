@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="assets/css/materialize.min.css" media="screen,projection" />
+  <link type="text/css" rel="stylesheet" href="assets/css/main.css" />
+
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RUHere Mentorship Matching</title>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="main-header-inner">
+    <nav class="red darken-2">
+      <div class="container">
+        <div class="nav-wrapper">
+          <a href="#" class="brand-logo">
+            RUHere
+          </a>
+          <a href="#" data-activates="mobile-nav" class="button-collapse">
+            <i class="fa fa-bars"></i>
+          </a>
+          <ul class="right hide-on-med-and-down">
+            <li>
+              <a href="#">
+                Home
+              </a>
+            </li>
+            <li>
+              <a class="active-link black-text" href="signup.html">
+                Sign Up
+              </a>
+            </li>
+            <li>
+              <a href="#login-modal" class="btn black modal-trigger">
+                Login
+              </a>
+            </li>
+          </ul>
+          <ul class="side-nav" id="mobile-nav">
+            <h4 class="black-text center">RUHere</h4>
+            <li>
+              <div class="divider"></div>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fa fa-home black-text"></i> Home</a>
+            </li>
+            <li>
+              <a href="signup.html">
+                <i class="fa fa-users black-text"></i> Sign Up</a>
+            </li>
+            <li>
+              <div class="divider"></div>
+            </li>
+            <li>
+              <a href="#" class="btn red">Login</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+    <!-- Showcase -->
+    <div class="transparent red-text">
+      <div class="row">
+        <div class="col s12 m10 offset-m1 center">
+          <h3>Welcome to RUHere</h3>
+          <h5>A Mentorship Matching Application</h5                            >
+          <h1>Create A Profile</h1>
+        </div>
+      </div>
+    </div>
+    <div class="divider"></div>
+  </header>
+
+  <!-- Section: Signup -->
+
+  <!-- add if you need it <section class="section section-signup">
+    <div class="container">
+      <div class="row">
+        <div class="col s12 m6">
+          <h4>Get a free account</h4>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus veniam id nisi? Saepe sint ipsum distinctio
+            molestiae, recusandae autem sequi?</p>
+          <h4>Download the free software</h4>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus veniam id nisi? Saepe sint ipsum distinctio
+            molestiae, recusandae autem sequi?</p>
+          <h4>Push to the platform</h4>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus veniam id nisi? Saepe sint ipsum distinctio
+            molestiae, recusandae autem sequi?</p>
+        </div>  -->
+  <section class="section section-login">
+    <div class="container">
+      <div class="row">
+        <div class="col s12 m8 offset-m2 l6 offset-l3">
+          <div class="card-panel login red darken-2 white-text center">
+            <form>
+              <div class="input-field">
+                <input type="text" id="whole_name">
+                <label for="whole_name">
+                  Name
+                </label>
+              </div>
+              <div class="input-field">
+                <input type="email" id="email">
+                <label for="email">
+                  Email
+                </label>
+              </div>
+              <div class="input-field">
+                <input type="password" id="password">
+                <label for="password">
+                  Password
+                </label>
+              </div>
+              <div class="input-field">
+                <select id="gender">
+                  <option value="" disabled selected>
+                    Select Gender
+                  </option>
+                  <option value="male">
+                    Male
+                  <option value="female">
+                    Female
+                  </option>
+                </select>
+                <label for="gender">
+                  Gender
+                </label>
+              </div>
+              <div class="input-field">
+                <select id="role">
+                  <option value="" disabled selected>
+                    Select Role
+                  </option>
+                  <option value="mentee">
+                    Student
+                  <option value="Mentor">
+                    Graduate
+                  </option>
+                </select>
+                <label for="role">
+                  Role
+                </label>
+              </div>
+              <input type="submit" value="Signup" class="btn btn-large black btn-extend">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="page-footer red darken-2">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">
+            About Us
+          </h5>
+          <p class="white-text">
+            Project 2 Group 4 Mentorship and Social Media App 
+          </p>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <h5 class="white-text">Links</h5>
+          <ul>
+            <li>
+              <a class="grey-text text-lighten-3" href="#">Profile</a>
+            </li>
+            <li>
+              <a class="grey-text text-lighten-3" href="#">About Us</a>
+            </li>
+            <li>
+              <a class="grey-text text-lighten-3" href="#">Login</a>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright black">
+      <div class="container">
+        Group4 &copy; 2018
+        <a class="white-text right" href="#">Terms & Conditions</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Login Modal -->
+  <div id="login-modal" class="modal">
+    <div class="modal-content">
+      <h4>Account Login</h4>
+      <p>Login to access your account dashboard</p>
+      <form>
+        <div class="input-field">
+          <input type="email" id="email">
+          <label for="email">Email</label>
+        </div>
+        <div class="input-field">
+          <input type="password" id="password">
+          <label for="password">Password</label>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close btn grey">
+        <i class="fa fa-sync"></i> Reset Password</a>
+      <a href="#!" class="modal-action modal-close btn purple">
+        <i class="fa fa-lock"></i> Login</a>
+    </div>
+  </div>
+
+  <!--Import jQuery before materialize.js-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="assets/js/materialize.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('.button-collapse').sideNav();
+      $('.modal').modal();
+      $('select').material_select();
+    });
+  </script>
