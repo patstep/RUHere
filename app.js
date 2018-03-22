@@ -19,7 +19,15 @@ const server = app.listen(PORT, () => {
 const io = socket(server);
 
 io.on('connection', (socket) =>{
-	console.log('socket is connected...');
+	console.log('socket is connected...', socket.id);
+	// handle chat event
+	socket.on('chat', (data) => {
+		io.sockets.emit('chat', data);
+	});
+
+	socket.on('typing', (data) =>{
+		socket.broadcast.emit('typing', data);
+	});
 });
 // models
 // const db = require('./models');
