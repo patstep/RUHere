@@ -3,10 +3,14 @@ const express = require('express');
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 const authRoutes = require('./routes/auth-routes');
+const profileRoutes = require('./routes/profile-routes');
 const passportSetup = require('./config/passport-setup');
+const keys = require('./config/keys');
 //socket.io
 const socket = require('socket.io');
-
+// cookie session
+const cookieSession = require('cookie-session');
+const passport = require('passport');
 
 // set up the express app
 const app = express();
@@ -29,6 +33,20 @@ io.on('connection', (socket) =>{
 		socket.broadcast.emit('typing', data);
 	});
 });
+
+// set up cookie session
+app.use(cookieSession({
+	// 24 hrs in miliseconds
+	maxAge: 24 * 60 * 60 * 1000,
+	keys: [keys.session.cookieKey]
+}));
+
+// initialize passport
+app.use(passport.initialize());
+
+// control log in
+app.use(passport.session());
+
 // models
 // const db = require('./models');
 
@@ -45,10 +63,9 @@ app.set('view engine', 'handlebars');
 // Serve static content for the app from the "public" directory in the app directory
 app.use(express.static("public"));
 
-
-
 // set up routes
 app.use('/auth', authRoutes);
+app.use('/profile', profileRoutes);
 
 // app.use('/', htmlRoutes);
 
@@ -66,11 +83,6 @@ require('./routes/html-routes.js')(app);
 // 		console.log(`App now listening at PORT: ${PORT}`);
 // 	});
 // });
-
-
-
-
-
 
 // LISTEN TO PORT
 // app.listen(PORT, () => {
