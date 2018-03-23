@@ -1,8 +1,21 @@
 const passport = require('passport');
-const GoogleStrategy = require('passport-google-oauth20');
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const keys = require('./keys');
 const User = require('../models/users');
 
+// serialize user
+passport.serializeUser((user, done) => {
+    // store id into a cookie
+    return done(null, user.id);
+});
+
+passport.deserializeUser((id, done) => {
+    User.findById(id).then((user) => {
+        done(null, user);
+    });
+});
+
+// create new google strategy
 passport.use(
     new GoogleStrategy({
         //options for the strategy
@@ -23,17 +36,26 @@ passport.use(
             if (currentUser) {
                 // already have the user
                 console.log(`User is: ${currentUser}`);
+                // begin to serialize user
+                return done(null, currentUser);
 
             } else {
                 // create new user
-                User.create({
+                let data = {
                     username: profile.displayName,
                     gender: profile.gender,
                     googleID: profile.id
-                    // console.log('new user created');
-                })
-            }
-        });
+                };
 
-    })
-)
+                User.create(data).then((newUser, created)=>{
+                    console.log(`New User Created: ${newUser}`);
+                    return done(null, newUser);
+                });              
+                    
+                }
+                
+                })
+                
+            }));
+
+
