@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="assets/css/materialize.min.css" media="screen,projection" />
+  <link type="text/css" rel="stylesheet" href="assets/css/main.css" />
+
+  <!--This sets the browser to be optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RUHere Matchup</title>
+</head>
+
+<header class="main-header-inner">
+    <nav class="red darken-2">
+      <div class="container">
+        <div class="nav-wrapper">
+          <a href="#" class="brand-logo">
+            RUHere
+          </a>
+          <a href="#" data-activates="mobile-nav" class="button-collapse">
+            <i class="fa fa-bars"></i>
+          </a>
+          <ul class="right hide-on-med-and-down">
+            <li>
+              <a href="#">
+                Home
+              </a>
+            </li>
+            <li>
+              <a class="active-link black-text" href="signup.html">
+                Profile
+              </a>
+            </li>
+            <li>
+              <a href="#login-modal" class="btn black modal-trigger">
+                Chatroom
+              </a>
+            </li>
+          </ul>
+          <ul class="side-nav" id="mobile-nav">
+            <h4 class="black-text center">RUHere</h4>
+            <li>
+              <div class="divider"></div>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fa fa-home black-text"></i> Home</a>
+            </li>
+            <li>
+              <a href="profile.html">
+                <i class="fa fa-users black-text"></i>Profile</a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fa fa-home black-text"></i> Chatroom</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+    <!-- Background Showcase -->
+    <div class="transparent red-text">
+      <div class="row">
+        <div class="col s12 m10 offset-m1 center">
+          <h5>RU Here</h5                            >
+          <h1>Your Matches</h1>
+        </div>
+      </div>
+    </div>
+    <div class="divider"></div>
+  </header>
+    
+  <!-- Section: Users -->
+  
+  <section class="section section-users grey lighten-4">
+    <div class="container">
+      <div class="row">
+        <div class="col s12">
+          <div class="card">
+            <div class="card-content">
+              <span class="card-title">Users</span>
+              <table class="striped">
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Registered</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td width="70">
+                      <img src="img/person1.jpg" alt="" class="responsive-img circle" style="width: 40px;margin-left:10px;">
+                    </td>
+                    <td>John Doe</td>
+                    <td>jdoe@gmail.com</td>
+                    <td>Jan, 1 2018</td>
+                    <td>
+                      <a href="details.html" class="btn blue lighten-2">Details</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td width="70">
+                      <img src="img/person2.jpg" alt="" class="responsive-img circle" style="width: 40px;margin-left:10px;">
+                    </td>
+                    <td>Larry Watters</td>
+                    <td>lwatters@gmail.com</td>
+                    <td>Jan, 3 2018</td>
+                    <td>
+                      <a href="details.html" class="btn blue lighten-2">Details</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td width="70">
+                      <img src="img/person3.jpg" alt="" class="responsive-img circle" style="width: 40px;margin-left:10px;">
+                    </td>
+                    <td>Susan Williams</td>
+                    <td>susan@gmail.com</td>
+                    <td>Jan, 5 2018</td>
+                    <td>
+                      <a href="details.html" class="btn blue lighten-2">Details</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td width="70">
+                      <img src="img/person4.jpg" alt="" class="responsive-img circle" style="width: 40px;margin-left:10px;">
+                    </td>
+                    <td>Jeff Burke</td>
+                    <td>jburke@gmail.com</td>
+                    <td>Jan, 10 2018</td>
+                    <td>
+                      <a href="details.html" class="btn blue lighten-2">Details</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="card-action">
+              <ul class="pagination">
+                <li class="disabled">
+                  <a href="#!" class="blue-text">
+                    <i class="material-icons">chevron_left</i>
+                  </a>
+                </li>
+                <li class="active blue lighten-2">
+                  <a href="#!" class="white-text">1</a>
+                </li>
+                <li class="waves-effect">
+                  <a href="#!" class="blue-text">2</a>
+                </li>
+                <li class="waves-effect">
+                  <a href="#!" class="blue-text">3</a>
+                </li>
+                <li class="waves-effect">
+                  <a href="#!" class="blue-text">4</a>
+                </li>
+                <li class="waves-effect">
+                  <a href="#!" class="blue-text">5</a>
+                </li>
+                <li class="waves-effect">
+                  <a href="#!" class="blue-text">
+                    <i class="material-icons">chevron_right</i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="page-footer red darken-2">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">
+            About Us
+          </h5>
+          <p class="white-text">
+            Project 2 Group 4 Mentorship and Social Media App 
+          </p>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <h5 class="white-text">Links</h5>
+          <ul>
+            <li>
+              <a class="grey-text text-lighten-3" href="#">Profile</a>
+            </li>
+            <li>
+              <a class="grey-text text-lighten-3" href="#">About Us</a>
+            </li>
+            <li>
+              <a class="grey-text text-lighten-3" href="#">Login</a>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright black">
+      <div class="container">
+        Group4 &copy; 2018
+        <a class="white-text right" href="#">Terms & Conditions</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Preloader -->
+  <div class="loader preloader-wrapper big active">
+    <div class="spinner-layer spinner-blue-only">
+      <div class="circle-clipper left">
+        <div class="circle"></div>
+      </div>
+      <div class="gap-patch">
+        <div class="circle"></div>
+      </div>
+      <div class="circle-clipper right">
+        <div class="circle"></div>
+      </div>
+    </div>
+  </div>
+
+  <!--Import jQuery before materialize.js-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="js/materialize.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('.button-collapse').sideNav();
+      $('.modal').modal();
+      $('select').material_select();
+    });
+  </script>
+
+  <script>
+    // Hide Sections
+    $('.section').hide();
+
+    setTimeout(function () {
+      $(document).ready(function () {
+        // Show sections
+        $('.section').fadeIn();
+
+        // Hide preloader
+        $('.loader').fadeOut();
+
+        //Init Side nav
+        $('.button-collapse').sideNav();
+
+        // Init Modal
+        $('.modal').modal();
+
+      });
+    }, 1000);
+  </script>
+</body>
+
+</html>
+        

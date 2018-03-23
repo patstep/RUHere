@@ -4,6 +4,7 @@
 <head>
   <!--Import Google Icon Font-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
   <!--Import materialize.css-->
   <link type="text/css" rel="stylesheet" href="assets/css/materialize.min.css" media="screen,projection" />
   <link type="text/css" rel="stylesheet" href="assets/css/main.css" />
@@ -12,31 +13,76 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>RUHere Login/Signup</title>
 </head>
-  <!-- Navbar and logo -->
-<body class="grey lighten-4">
-  <nav class="red darken-2">
-    <div class="container">
-      <div class="nav-wrapper">
-        <a href="login.html" class="brand-logo black-text">
-          RUHere
-        </a>
+<body>
+  <!-- Header -->
+  <header class="main-header-inner">
+    <nav class="red darken-2">
+      <div class="container">
+        <div class="nav-wrapper">
+          <a href="#" class="brand-logo">
+            RUHere
+          </a>
+          <a href="#" data-activates="mobile-nav" class="button-collapse">
+            <i class="fa fa-bars"></i>
+          </a>
+          <ul class="right hide-on-med-and-down">
+            <li>
+              <a href="#">
+                Home
+              </a>
+            </li>
+            <li>
+              <a class="active-link black-text" href="signup.html">
+                Sign Up
+              </a>
+            </li>
+            <li>
+              <a href="#login-modal" class="btn black modal-trigger">
+                Login
+              </a>
+            </li>
+          </ul>
+
+          <!-- Navbar -->
+
+          <ul class="side-nav" id="mobile-nav">
+            <h4 class="black-text center">RUHere</h4>
+            <li>
+              <div class="divider"></div>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fa fa-home black-text"></i> Home</a>
+            </li>
+            <li>
+              <div class="divider"></div>
+            </li>
+            <li>
+              <a href="#" class="btn red">Login</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+    <!-- Background Showcase -->
+    <div class="transparent red-text">
+      <div class="row">
+        <div class="col s12 m10 offset-m1 center">
+          <h3>Welcome to RUHere</h3>
+          <h1>Login</h1>
+        </div>
       </div>
     </div>
-  </nav>
+  </header>
+  
   <!-- Login or Signup -->
   <section class="section section-login">
     <div class="container">
       <div class="row">
         <div class="col s12 m8 offset-m2 l6 offset-l3">
           <div class="card-panel login red darken-2 black-text center">
-            <h2>
-              RUHere Login
-            </h2>
             <form action="#">
-              <!-- This is an inline input field:
-          <div class="input-field inline">
-            <input id="email" type="email" class="white-text">
-            <label for="email" data-error="wrong" data-success="right">Email</label>  -->
               <div class="input-field">
                 <i class="material-icons prefix">
                   email
@@ -46,24 +92,20 @@
                   Email
                 </label>
               </div>
-              <!-- This is an inline input field:
-          <div class="input-field inline">
-            <input type="password" id="password">
-                <label class="white-text" for="password">Password</label>  -->
               <div class="input-field">
                 <i class="material-icons prefix">lock</i>
                 <input type="password" id="password">
                 <label class="white-text" for="password">
                   Password
                 </label>
-              </div>  
-              <input href="signup.html" type="submit" value="Login" class="btn btn-large btn-extended grey lighten-4 black-text">
-
+              </div>
+              <a href="#" class="modal-action modal-close btn black">Login</a>  
+              <a href="#" class="modal-action modal-close btn black">
+              <i class="fab fa-google-plus-g"></i>  Login</a>
               <p class="center-align">
                 -or-
               </p>
-
-              <input type="submit" value="Signup" class="btn btn-large btn-extended grey lighten-4 black-text">
+                <a href="signup.html" class="modal-action modal-close btn black">Signup</a>
             </form>
           </div>
         </div>
@@ -73,13 +115,42 @@
 
 
   <!-- Footer -->
-  <footer class="section red darken-2 black-text center">
-    <p>Group4 Copyright &copy; 2018</p>
+  <footer class="page-footer red darken-2">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">
+            About Us
+          </h5>
+          <p class="white-text">
+            Project 2 Group 4 Mentorship and Social Media App 
+          </p>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <h5 class="white-text">Links</h5>
+          <ul>
+            <li>
+              <a class="grey-text text-lighten-3" href="#">Profile</a>
+            </li>
+            <li>
+              <a class="grey-text text-lighten-3" href="#">About Us</a>
+            </li>
+            <li>
+              <a class="grey-text text-lighten-3" href="#">Login</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright black">
+      <div class="container">
+        Group4 &copy; 2018
+        <a class="white-text right" href="#">Terms & Conditions</a>
+      </div>
+    </div>
   </footer>
 
-
-
-  <!-- Red Preloader -->
+<!-- Red Preloader -->
   <div class="loader preloader-wrapper big active">
     <div class="spinner-layer spinner-red-only">
       <div class="circle-clipper left">
@@ -112,6 +183,13 @@
 
       });
     }, 1000);
+  </script>
+  <script>
+    $(document).ready(function () {
+      $('.button-collapse').sideNav();
+      $('.modal').modal();
+      $('select').material_select();
+    });
   </script>
 </body>
 
