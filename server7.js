@@ -9,6 +9,12 @@ const connection = mysql.createConnection({
   database: "RUHere"
 });
 
+// const q = connection.query;
+// connection.query = function() {
+//   console.log(arguments[0]);
+//   return q.call(this, ...arguments);
+// };
+
 connection.connect(function(err) {
   if (err) throw err;
   console.log('hi');
@@ -111,8 +117,6 @@ function handleData(data, data2){
 
   // calculate differences
 
-    connection.query('DELETE FROM diff')
-
     let diffIDs = new Array
     let diffNums = new Array
 
@@ -120,11 +124,11 @@ function handleData(data, data2){
 
       let diffq1, diffq2, diffq3, diffq4, diffq5
 
-      diffq1 = (mentorTotal[i][1] - menteeTotal[1])
-      diffq2 = (mentorTotal[i][2] - menteeTotal[2])
-      diffq3 = (mentorTotal[i][3] - menteeTotal[3])
-      diffq4 = (mentorTotal[i][4] - menteeTotal[4])
-      diffq5 = (mentorTotal[i][5] - menteeTotal[5])
+      diffq1 = (mentorTotal[i][1] - menteeTotal[1])*(5/7)
+      diffq2 = (mentorTotal[i][2] - menteeTotal[2])*(2/7)
+      diffq3 = (mentorTotal[i][3] - menteeTotal[3])*(5/7)
+      diffq4 = (mentorTotal[i][4] - menteeTotal[4])*(2/7)
+      diffq5 = (mentorTotal[i][5] - menteeTotal[5])*(5/7)
 
         const query = connection.query("INSERT INTO diff SET ?",
             {
@@ -140,17 +144,12 @@ function handleData(data, data2){
 
     // find matches
 
-      // calculate ranking scores
+    //   calculate ranking scores
 
       const query2 = connection.query("SELECT user_id FROM diff ORDER BY diff1 DESC", function(err, res){
-
-            // console.log(res)
-
             for (i = 0; i < res.length; i++){
-
                   let add = 15 - i
                   let user_id = res[i].user_id
-
                   const query = connection.query("INSERT INTO rank_count1 SET ?",
                       {
                         user_id: user_id,
@@ -158,36 +157,32 @@ function handleData(data, data2){
                       }
                   );
             }
+      query3();
       })
+}
 
-      const query3 = connection.query("SELECT user_id FROM diff ORDER BY diff2 DESC", function(err, res){
-
-            // console.log(res)
-
-            for (i = 0; i < res.length; i++){
-
-                  let add = 15 - i
-                  let user_id = res[i].user_id
-
-                  const query = connection.query("INSERT INTO rank_count2 SET ?",
-                      {
-                        user_id: user_id,
-                        q2: add
-                      }
-                  );
-            }
-      })
+      function query3(){  
+              const query3 = connection.query("SELECT user_id FROM diff ORDER BY diff2 DESC", function(err, res){
+                    for (i = 0; i < res.length; i++){
+                          let add = 15 - i
+                          let user_id = res[i].user_id
+                          const query = connection.query("INSERT INTO rank_count2 SET ?",
+                              {
+                                user_id: user_id,
+                                q2: add
+                              }
+                          );
+                    }
+                query4(); 
+              })
+      }
 
 
+     function query4(){ 
       const query4 = connection.query("SELECT user_id FROM diff ORDER BY diff3 DESC", function(err, res){
-
-            // console.log(res)
-
             for (i = 0; i < res.length; i++){
-
                   let add = 15 - i
                   let user_id = res[i].user_id
-
                   const query = connection.query("INSERT INTO rank_count3 SET ?",
                       {
                         user_id: user_id,
@@ -195,17 +190,15 @@ function handleData(data, data2){
                       }
                   );
             }
+        query5();
       })
+    }
 
+    function query5(){
       const query5 = connection.query("SELECT user_id FROM diff ORDER BY diff4 DESC", function(err, res){
-
-            // console.log(res)
-
             for (i = 0; i < res.length; i++){
-
                   let add = 15 - i
                   let user_id = res[i].user_id
-
                   const query = connection.query("INSERT INTO rank_count4 SET ?",
                       {
                         user_id: user_id,
@@ -213,18 +206,16 @@ function handleData(data, data2){
                       }
                   );
             }
+        query6();
       })
+     }
 
 
+    function query6(){
       const query6 = connection.query("SELECT user_id FROM diff ORDER BY diff5 DESC", function(err, res){
-
-            // console.log(res)
-
             for (i = 0; i < res.length; i++){
-
                   let add = 15 - i
                   let user_id = res[i].user_id
-
                   const query = connection.query("INSERT INTO rank_count5 SET ?",
                       {
                         user_id: user_id,
@@ -232,22 +223,62 @@ function handleData(data, data2){
                       }
                   );
             }
+        join();
       })
+    }
 
-      // join tables
-      
-      let query7 = "SELECT rank_count1.user_id, rank_count1.q1, rank_count2.q2 FROM rank_count1 LEFT JOIN rank_count2 ON rank_count1.user_id = rank_count2.user_id"
-      connection.query(query7, function(err, res){
+   function join(){
+        connection.query("SELECT * FROM rank_count1 LEFT JOIN rank_count2 on rank_count1.user_id = rank_count2.user_id LEFT JOIN rank_count3 on rank_count1.user_id = rank_count3.user_id LEFT JOIN rank_count4 on rank_count1.user_id = rank_count4.user_id LEFT JOIN rank_count5 on rank_count1.user_id = rank_count5.user_id", function(err, res){
+              
+      for (i = 0; i < res.length; i ++){
+          
+          let total_data = new Array
+          let final_data = new Array
 
-        console.log(res)
+          let user = res[i].q1 + res[i].q2 + res[i].q3 + res[i].q4 + res[i].q5
+
+          total_data.push(res[i].user_id, user)
+
+          final_data.push(total_data)
+
+          console.log(total_data)
+
+          const query = connection.query("INSERT INTO final_table SET ?",
+                      {
+                        user_id: total_data[0],
+                        total: user
+                      }
+          )
+
+      }
+
+      report();
 
       })
+    }
 
+function report(){
 
+    connection.query("SELECT * FROM final_table ORDER BY total DESC", function(err, res){
 
+        // console.log(res)
 
-}
+          console.log("You've matched with " + res[0].user_id)
+          console.log("You've matched with " + res[1].user_id)
+          console.log("You've matched with " + res[2].user_id)
+          console.log("You've matched with " + res[3].user_id)
+          console.log("You've matched with " + res[4].user_id)
+    })
 
+    connection.query("DELETE FROM diff")
+    connection.query("DELETE FROM rank_count1")
+    connection.query("DELETE FROM rank_count2")
+    connection.query("DELETE FROM rank_count3")
+    connection.query("DELETE FROM rank_count4")
+    connection.query("DELETE FROM rank_count5")
+    connection.query("DELETE FROM final_table")
+
+  }
 
 
 
